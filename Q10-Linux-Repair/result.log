@@ -1,0 +1,14 @@
+g++ -std=c++17 -Wall -Wextra -g -Iinclude -o output/main src/main.o  -Llib
+Executing all complete!
+./output/main
+**               排序算法比较               **
+**               1---冒泡排序               **
+**               2---选择排序               **
+**               3---插入排序               **
+**               4---希尔排序               **
+**               5---快速排序               **
+**               6---堆排序                 **
+**               7---归并排序               **
+**               8---基数排序               **
+**               0---退出程序               **
+Input num of random numbers : 

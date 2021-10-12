@@ -1,0 +1,46 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+/.vs
+/data_structure_template/Debug
+/.vs/data_stucture
+/Q1/test_input.txt
+/Q1/Debug
+/Q2/Debug
+/Q3/Debug
+/Q4/Debug
+/Q5/Debug
+/Q6/Debug
+/Q7/Debug
+/Q8/Debug
+/Q9/Debug
+/Q10/Debug
