@@ -13,6 +13,7 @@
 
 5. 剩余旅客的序号。*/
 #include "CircularList.h"
+#include "tool.h"
 class Joseph {
    private:
     int num;             //旅客个数
@@ -29,7 +30,7 @@ class Joseph {
         rest = REST;
         for (int i = 0; i < num; i++) {
             int ins = i + 1;
-            List.Insert(i, ins);  //初始化
+            List.Insert(List.Length(), ins);  //初始化
         }
     }
     ~Joseph(){};
@@ -38,67 +39,55 @@ class Joseph {
 };
 
 void Joseph::solve() {
-    int id = 0;
-    // //List.output();  //输出初始链表
     cout << "起始人数为：" << num << endl;
     cout << "报数间隔为：" << gap << endl;
     cout << "起始位置为：" << start << endl;
     cout << "剩余个数为：" << rest << endl;
-    cout << "Start Solving." << endl;
+    cout << "---------- Start Solving ----------" << endl;
 
-    // // //使用current遍历
-    // // CircLinkNode<int>* current = List.getHead();  //current指针
-    // // if (current == NULL) {
-    // //     cerr << "起始位置错误！" << endl;
-    // //     exit(1);
-    // // }
-
-    // // for (int i = 0; i < start; i++) {
-    // //     current = current->Link;  //移动指针到起始位置
-    // //     id++;
-    // // }
-    // // for (int i = 0; i < num - rest; i++) {  //删除次数
-    // //     for (int j = 1; j < gap; j++) {     //起始位置为1，很重要!
-    // //         // // cout << "current指针的地址为:" << current << endl;
-    // //         // // cout << "current->Link的地址为：" << current->Link << endl;
-    // //         // // cout << "head的地址为：" << List.getHead() << endl;
-    // //         // // cout << "地址偏移量为：" << hex << (current - List.getHead()) * sizeof(current) << endl
-    // //         // //      << endl;
-    // //         // // cout << dec;
-    // //         if (current->Link == List.getHead()) {  //满足这个条件表示current在尾节点
-    // //             current = current->Link->Link;      //指向第一个元素
-    // //             id = 1;                             //id重置为1
-    // //         } else {
-    // //             current = current->Link;
-    // //             id++;
-    // //         }
-    // //     }
-    // //     cout << "第" << i + 1 << "次删除:";
-    // //     cout << "current指向位置的元素为" << current->data << endl;
-    // //     int del;
-    // //     List.Remove(id, del);
-
-    //使用id计数删除
-    id = start;
-    for (int i = 0; i < num - rest; i++) {  //删除次数
-        for (int j = 1; j < gap; j++) {     //起始位置为1，很重要!
-            id++;
+    CircLinkNode<int>* current = new CircLinkNode<int>;
+    current = List.getHead();
+    int i = start;
+    int count = num - rest;
+    int del;              //删除的序号
+    int pos = start - 1;  //记录删除的位置
+    while (i--)           //定位到起始位置
+        current = current->Link;
+    while (count--) {
+        for (int i = 0; i < gap; i++) {
+            if (current == List.getHead()) {
+                current = current->Link;
+                pos = 0;
+            }
+            current = current->Link;
+            pos++;
         }
-        int del;
-        id = (id - 1) % List.Length() + 1;
-        List.Remove(id, del);
-        Del.Insert(Del.Length(), del);  //尾部插入删除的元素，存储
+        del = current->data;
+        List.Remove(pos, del);
+        // cout << "第" << num - rest - count + 1 << "次删除的位置: " << pos << ",删除的元素为: " << del << endl;
+        // List.output();
+        Del.Insert(Del.Length(), del);
+        pos--;  //删除后的位置在原链表的位置发生改变
     }
-    cout << endl;
     cout << "死亡序号为： " << endl;
     Del.output();
     cout << "剩余序号为" << endl;
     List.output();
+
+    delete[] current;
 }
 
 void Solution() {
-    //还需加入四个参数的输入
-    //注意四个参数的范围关系
-    Joseph J(30, 1, 9, 15);
+    int num;    //旅客个数
+    int start;  //开始位置
+    int gap;    //间隔
+    int rest;   //剩余人数
+    get_input(num, 1, INT32_MAX, "请输入开始总人数(1 ~ INT32_MAX): ");
+    get_input(start, 1, num, "请输入开始位置(1 ~ 总人数):      ");
+    get_input(gap, 1, num, "请输入间隔(1 ~ 总人数-1):        ");
+    get_input(rest, 0, num, "请输入剩余人数(0 ~ 总人数):      ");
+    cout<<"---------- 初 始 化 ----------"<<endl;
+    Joseph J(num, start, gap, rest);
+    cout<<"---------- 已 完 成 ----------"<<endl;
     J.solve();
 }
