@@ -32,7 +32,6 @@
 *.app
 /.vs
 /data_structure_template/Debug
-/.vs/data_stucture
 /Q1/test_input.txt
 /Q1/Debug
 /Q2/Debug
@@ -44,3 +43,9 @@
 /Q8/Debug
 /Q9/Debug
 /Q10/Debug
+/题目.md
+/media
+/Q1/x64/Debug/Q1.tlog
+/Q1/x64/Debug/Q1.ilk
+*.idb
+*.pdb
