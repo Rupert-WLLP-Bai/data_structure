@@ -11,8 +11,7 @@
 namespace sort_laobai {
 void swap(int& a, int& b);                                             //交换
 void assign(int* num, int* _arr, int N);                               //赋值
-void std_result();                                                     //std::sort的结果
-void print_inital(int* _arr);                                          //初始未排序结果
+void std_result(int *_arr);                                            //std::sort的结果
 void Bubble_sort(int* _arr);                                           //冒泡排序
 void Selection_sort(int* _arr);                                        //选择排序
 void Insertion_sort(int* _arr);                                        //插入排序
@@ -83,6 +82,31 @@ void sort_laobai::assign(int* num, int* arr, int N) {
     for (int i = 0; i < N; i++) {
         arr[i] = num[i];
     }
+}
+
+//std::sort的结果
+void sort_laobai::std_result(int* _arr) {
+    //复制
+    vector<int> L;
+    int* p = _arr;
+    while (*p != -1) {
+        L.push_back(*p);
+        p++;
+    }
+    //计时开始
+    timespec t1, t2;
+    clock_gettime(CLOCK_MONOTONIC, &t1);
+    //排序
+    sort(L.begin(), L.end());
+     //计时结束
+    clock_gettime(CLOCK_MONOTONIC, &t2);
+    int64_t deltaT = (t2.tv_sec - t1.tv_sec) * int64_t(pow(10, 9)) + t2.tv_nsec - t1.tv_nsec;
+    cout << "--------------------std::sort的结果-------------------" << endl;
+    cout << "Time  :" << deltaT << " ns = " << double(deltaT / pow(10, 6)) << " ms" << endl;
+    cout << "Count :" << "UNKNOWN" << endl;
+    //if (N < 100)
+        //print_arr(arr);
+    cout << "--------------------------------------------------" << endl;
 }
 
 //八种排序(10种)
@@ -542,3 +566,4 @@ int sort_laobai::max_bit(int* arr, int N) {
     bit = int(log10(max)) + 1;
     return bit;
 }
+//2021年10月19日17:41:56

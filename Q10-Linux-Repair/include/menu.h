@@ -47,6 +47,9 @@ void print_menu() {
          << "8---基数排序" << setw(15) << " "
          << "**" << endl;
     cout << "**" << setw(15) << ""
+         << "9---std::sort" << setw(14) << " "
+         << "**" << endl;
+    cout << "**" << setw(15) << ""
          << "0---退出程序" << setw(15) << " "
          << "**" << endl;
 }
@@ -73,8 +76,8 @@ void get_input(int& ret, int min, int max, const char* prompt = "") {
 
 void fetch_choice(int* arr) {
     int ret;
-    const char* NAME[9] = {"Exit", "Bubble_sort", "Selection_sort", "Insertion_sort", "Quick_sort", "Shell_sort", "Heap_sort", "Merge_sort", "Radix_sort"};
-    get_input(ret, 0, 8, "Choose type of sort : ");  //0~8的输入
+    const char* NAME[10] = {"Exit", "Bubble_sort", "Selection_sort", "Insertion_sort", "Quick_sort", "Shell_sort", "Heap_sort", "Merge_sort", "Radix_sort", "std::sort"};
+    get_input(ret, 0, 9, "Choose type of sort : ");  //0~9的输入
     cout << NAME[ret] << endl;
     switch (ret) {
         case 0:  //退出
@@ -104,6 +107,9 @@ void fetch_choice(int* arr) {
         case 8:  //基数排序
             Radix_sort(arr);
             break;
+        case 9:  //std::sort()
+            std_result(arr);
+            break;
     }
 }
 
@@ -126,3 +132,4 @@ void mainloop() {
         fetch_choice(arr);
     }
 }
+//2021年10月19日17:41:46
