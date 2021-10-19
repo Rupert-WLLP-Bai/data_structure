@@ -175,6 +175,7 @@ void List<T>::output() {
         current = current->link;
     }
 }
+//2021Äê10ÔÂ19ÈÕ17:57:27
 
 template <class T>
 List<T>& List<T>::operator=(List<T>& L) {

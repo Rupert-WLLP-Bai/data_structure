@@ -241,3 +241,4 @@ void List<T>::inputRear(T endTag) {
     }
     last->link = NULL;  //表收尾
 }
+//时间
