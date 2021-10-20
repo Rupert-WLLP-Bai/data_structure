@@ -1,4 +1,4 @@
-//DFS ä¸ä½¿ç”¨å¹¶æŸ¥é›†
+//DFS ²»Ê¹ÓÃ²¢²é¼¯
 #include <algorithm>
 #include <cmath>
 #include <fstream>
@@ -14,23 +14,23 @@ class DFS {
    public:
     void get_choice(int* choice, int current, Maze A);
     bool search_neighbors(int* neighbor_visited, int current, Maze A, vector<int> visited);
-    void generate(Maze& A) {  //ç”Ÿæˆè¿·å®«
-        //const char* F[] = {"ä¸Š", "ä¸‹", "å·¦", "å³"};
+    void generate(Maze& A) {  //Éú³ÉÃÔ¹¬
+        //const char* F[] = {"ÉÏ", "ÏÂ", "×ó", "ÓÒ"};
         srand(time(NULL));
-        A.L.push(A.start);                              //èµ·å§‹ä½ç½®å…¥æ ˆ
-        A.map[A.start._x][A.start._y]._visited = true;  //èµ·ç‚¹æ ‡è®°ä¸ºå·²è¢«è®¿é—®
-        int current_x, current_y;                       //ç°åœ¨èŠ‚ç‚¹æ‰€åœ¨çš„ä½ç½®
-        current_x = A.start._x;                         //èµ·ç‚¹
-        current_y = A.start._y;                         //èµ·ç‚¹
+        A.L.push(A.start);                              //ÆğÊ¼Î»ÖÃÈëÕ»
+        A.map[A.start._x][A.start._y]._visited = true;  //Æğµã±ê¼ÇÎªÒÑ±»·ÃÎÊ
+        int current_x, current_y;                       //ÏÖÔÚ½ÚµãËùÔÚµÄÎ»ÖÃ
+        current_x = A.start._x;                         //Æğµã
+        current_y = A.start._y;                         //Æğµã
         //cout << "start = (" << A.start._x << "," << A.start._y << ")" << endl;
-        while (A.L.top() != A.end) {                                 //æœªèµ°åˆ°ç»ˆç‚¹ æœç´¢é‚»æ¥èŠ‚ç‚¹
-            if (!A.search_neighbors(A.map[current_x][current_y])) {  //é‚»æ¥èŠ‚ç‚¹æœ‰æœªè¢«è®¿é—®çš„èŠ‚ç‚¹
-                int direction;                                       //æ–¹å‘
+        while (A.L.top() != A.end) {                                 //Î´×ßµ½ÖÕµã ËÑË÷ÁÚ½Ó½Úµã
+            if (!A.search_neighbors(A.map[current_x][current_y])) {  //ÁÚ½Ó½ÚµãÓĞÎ´±»·ÃÎÊµÄ½Úµã
+                int direction;                                       //·½Ïò
                 while (1) {
-                    int _x, _y;  //æ¨ªåæ ‡ï¼Œçºµåæ ‡
+                    int _x, _y;  //ºá×ø±ê£¬×İ×ø±ê
                     _x = current_x;
                     _y = current_y;
-                    direction = rand() % 4;  //å››ä¸ªæ–¹å‘
+                    direction = rand() % 4;  //ËÄ¸ö·½Ïò
                     if (direction == 0)
                         _x--;
                     else if (direction == 1)
@@ -39,24 +39,24 @@ class DFS {
                         _y--;
                     else
                         _y++;
-                    if (_x < 0 || _x > A.row - 1 || _y < 0 || _y > A.column - 1)  //è¶…é™
+                    if (_x < 0 || _x > A.row - 1 || _y < 0 || _y > A.column - 1)  //³¬ÏŞ
                         continue;
                     if (A.map[_x][_y]._visited == false)
                         break;
                 }
                 //cout << "direction = " << F[direction] << endl;
                 //print_visited();
-                A.break_the_wall(A.map[current_x][current_y], direction);      //æ‹†å¢™
-                Node cur = A.map[current_x][current_y] + A.offset[direction];  //æ›´æ–°ä½ç½®
-                current_x = cur._x;                                            //æ›´æ–°ä½ç½®
-                current_y = cur._y;                                            //æ›´æ–°ä½ç½®
-                A.map[current_x][current_y]._visited = true;                   //æ ‡è®°ä¸ºå·²è®¿é—®
-                A.L.push(A.map[current_x][current_y]);                         //èŠ‚ç‚¹å…¥æ ˆ
+                A.break_the_wall(A.map[current_x][current_y], direction);      //²ğÇ½
+                Node cur = A.map[current_x][current_y] + A.offset[direction];  //¸üĞÂÎ»ÖÃ
+                current_x = cur._x;                                            //¸üĞÂÎ»ÖÃ
+                current_y = cur._y;                                            //¸üĞÂÎ»ÖÃ
+                A.map[current_x][current_y]._visited = true;                   //±ê¼ÇÎªÒÑ·ÃÎÊ
+                A.L.push(A.map[current_x][current_y]);                         //½ÚµãÈëÕ»
                 //cout << "current = (" << current_x << "," << current_y << ")" << endl;
             } else {
-                A.L.pop();  //èŠ‚ç‚¹é€€æ ˆ
-                //cout << "(" << current_x << "," << current_y << ")é€€æ ˆ" << endl;
-                current_x = A.L.top()._x;  //æ›´æ–°ä½ç½®
+                A.L.pop();  //½ÚµãÍËÕ»
+                //cout << "(" << current_x << "," << current_y << ")ÍËÕ»" << endl;
+                current_x = A.L.top()._x;  //¸üĞÂÎ»ÖÃ
                 current_y = A.L.top()._y;
             }
             //print_the_wall();
@@ -64,7 +64,7 @@ class DFS {
         }
     }
     void solve(Maze A);          //SOLVE
-    void print_results(Maze A);  //Mazeå’ŒSolution
+    void print_results(Maze A);  //MazeºÍSolution
 
    private:
     deque<int> solution;
@@ -78,17 +78,17 @@ void DFS::get_choice(int* choice, int current, Maze A) {
 }
 void DFS::solve(Maze A) {
     srand(time(NULL));
-    vector<int> visited;  //è®°å½•å·²ç»è®¿é—®çš„ç‚¹
+    vector<int> visited;  //¼ÇÂ¼ÒÑ¾­·ÃÎÊµÄµã
     int choice[4];
     int direction;
     int current = A.start._x * A.column + A.start._y;
-    visited.push_back(current);                                     //èµ·ç‚¹æ ‡è®°
-    solution.push_back(A.start._x * A.column + A.start._y);         //æ”¾å…¥èµ·ç‚¹
-    while (solution.back() != A.end._x * A.column + A.end._y) {     //èµ°åˆ°ç»ˆç‚¹
-        get_choice(choice, current, A);                             //è·å–èŠ‚ç‚¹å¯ä»¥èµ°çš„ä½ç½®
-        bool flag = search_neighbors(choice, current, A, visited);  //æœç´¢é‚»æ¥èŠ‚ç‚¹çš„è®¿é—®æƒ…å†µ
+    visited.push_back(current);                                     //Æğµã±ê¼Ç
+    solution.push_back(A.start._x * A.column + A.start._y);         //·ÅÈëÆğµã
+    while (solution.back() != A.end._x * A.column + A.end._y) {     //×ßµ½ÖÕµã
+        get_choice(choice, current, A);                             //»ñÈ¡½Úµã¿ÉÒÔ×ßµÄÎ»ÖÃ
+        bool flag = search_neighbors(choice, current, A, visited);  //ËÑË÷ÁÚ½Ó½ÚµãµÄ·ÃÎÊÇé¿ö
         if (flag) {
-            while (1) {  //éšæœºä¸€ä¸ªä½ç½®
+            while (1) {  //Ëæ»úÒ»¸öÎ»ÖÃ
                 direction = rand() % 4;
                 if (choice[direction] == true)
                     break;
@@ -133,34 +133,34 @@ bool DFS::search_neighbors(int* choice, int current, Maze A, std::vector<int> vi
     if (choice[0]) {  //UP
         cur -= A.column;
         const vector<int>::iterator it = find(visited.begin(), visited.end(), cur);
-        if (it != visited.end()) {  //æ‰¾åˆ°
+        if (it != visited.end()) {  //ÕÒµ½
             choice[0] = false;
         }
-        cur = current;  //å›å¤
+        cur = current;  //»Ø¸´
     }
     if (choice[1]) {  //DOWN
         cur += A.column;
         const vector<int>::iterator it = find(visited.begin(), visited.end(), cur);
-        if (it != visited.end()) {  //æ‰¾åˆ°
+        if (it != visited.end()) {  //ÕÒµ½
             choice[1] = false;
         }
-        cur = current;  //å›å¤
+        cur = current;  //»Ø¸´
     }
     if (choice[2]) {  //LEFT
         cur -= 1;
         const vector<int>::iterator it = find(visited.begin(), visited.end(), cur);
-        if (it != visited.end()) {  //æ‰¾åˆ°
+        if (it != visited.end()) {  //ÕÒµ½
             choice[2] = false;
         }
-        cur = current;  //å›å¤
+        cur = current;  //»Ø¸´
     }
     if (choice[3]) {  //RIGHT
         cur += 1;
         const vector<int>::iterator it = find(visited.begin(), visited.end(), cur);
-        if (it != visited.end()) {  //æ‰¾åˆ°
+        if (it != visited.end()) {  //ÕÒµ½
             choice[3] = false;
         }
-        cur = current;  //å›å¤
+        cur = current;  //»Ø¸´
     }
     return (choice[0] | choice[1] | choice[2] | choice[3]);
 }
@@ -168,44 +168,44 @@ void DFS::print_results(Maze A) {
     int ID = 0;
     const int printnumber = 0;
     // int max_digit = int(log10(row * column)) + 1;
-    vector<Node> Line;  //ä¸€è¡Œçš„èŠ‚ç‚¹å†…å®¹
+    vector<Node> Line;  //Ò»ĞĞµÄ½ÚµãÄÚÈİ
     //cout << "Print_Node_All" << endl;
     for (int i = 0; i < A.row; i++) {
         Line.clear();
-        for (int j = 0; j < A.column; j++) {  //è¾“å‡ºç¬¬ä¸€è¡Œ
-            Line = A.map[i];                  //è·å–ç¬¬iè¡Œçš„èŠ‚ç‚¹æ•°æ®
-            cout << "â–ˆâ–ˆ";                     //è¾“å‡ºå·¦ä¸Šè§’ä¸€æ ¼å¢™
+        for (int j = 0; j < A.column; j++) {  //Êä³öµÚÒ»ĞĞ
+            Line = A.map[i];                  //»ñÈ¡µÚiĞĞµÄ½ÚµãÊı¾İ
+            cout << "¨€¨€";                     //Êä³ö×óÉÏ½ÇÒ»¸ñÇ½
             if (Line[j]._up == false)
-                cout << "â–ˆâ–ˆâ–ˆ";  //è¾“å‡ºèŠ‚ç‚¹ä¸Šæ–¹çš„å¢™
+                cout << "¨€¨€¨€";  //Êä³ö½ÚµãÉÏ·½µÄÇ½
             else {
                 cout << "\033[34m"
                      << "  "
-                     << "\033[0m";  //å¦åˆ™ä¸è¾“å‡ºå¢™
+                     << "\033[0m";  //·ñÔò²»Êä³öÇ½
             }
         }
-        cout << "â–ˆâ–ˆ" << endl;                 //è¾“å‡ºç»“æŸèŠ‚ç‚¹å³ä¸Šè§’çš„å¢™ï¼Œæ¢è¡Œ
-        cout << "â–ˆâ–ˆ";                         //è¾“å‡ºç¬¬äºŒè¡Œæœ€å·¦è¾¹çš„å¢™
-        for (int j = 0; j < A.column; j++) {  //è¾“å‡ºç¬¬äºŒè¡Œï¼ˆåŒ…å«å·¦å³å¢™å’Œæ•°å­—ï¼‰
+        cout << "¨€¨€" << endl;                 //Êä³ö½áÊø½ÚµãÓÒÉÏ½ÇµÄÇ½£¬»»ĞĞ
+        cout << "¨€¨€";                         //Êä³öµÚ¶şĞĞ×î×ó±ßµÄÇ½
+        for (int j = 0; j < A.column; j++) {  //Êä³öµÚ¶şĞĞ£¨°üº¬×óÓÒÇ½ºÍÊı×Ö£©
 
             if (Line[j]._right == false) {
                 if (printnumber)
-                    cout << hex << setw(3) << ID++;  //è¾“å‡ºæ•°å­—
+                    cout << hex << setw(3) << ID++;  //Êä³öÊı×Ö
                 else
                     cout << "   ";
-                cout << "â–ˆâ–ˆ";  //è¾“å‡ºèŠ‚ç‚¹å³è¾¹çš„å¢™
+                cout << "¨€¨€";  //Êä³ö½ÚµãÓÒ±ßµÄÇ½
             } else {
                 if (printnumber)
-                    cout << hex << setw(3) << ID++;  //è¾“å‡ºæ•°å­—
+                    cout << hex << setw(3) << ID++;  //Êä³öÊı×Ö
                 else
                     cout << "   ";
                 cout << "\033[34m"
                      << "  "
-                     << "\033[0m";  //å¦åˆ™ä¸è¾“å‡ºå¢™
+                     << "\033[0m";  //·ñÔò²»Êä³öÇ½
             }
         }
-        cout << endl;  //ç»“æŸè¾“å‡ºï¼Œæ¢è¡Œ
+        cout << endl;  //½áÊøÊä³ö£¬»»ĞĞ
     }
     for (int i = 0; i < 5 * A.column + 2; i++)
-        cout << "â–ˆ";  //è¾“å‡ºæœ€åä¸€è¡Œ
+        cout << "¨€";  //Êä³ö×îºóÒ»ĞĞ
     cout << endl;
 }

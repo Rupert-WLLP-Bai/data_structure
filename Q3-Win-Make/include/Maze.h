@@ -1,4 +1,4 @@
-//Maze.h è¿·å®«
+//Maze.h ÃÔ¹¬
 #pragma once
 #include <stdlib.h>
 #include <cmath>
@@ -11,9 +11,9 @@ using namespace std;
 
 class Node {
    public:
-    int _x, _y;                      //æ¨ªåæ ‡ï¼Œçºµåæ ‡
-    bool _visited;                   //æ˜¯å¦è¢«è®¿é—®
-    bool _up, _down, _left, _right;  //ä¸Šä¸‹å·¦å³çš„å¢™
+    int _x, _y;                      //ºá×ø±ê£¬×İ×ø±ê
+    bool _visited;                   //ÊÇ·ñ±»·ÃÎÊ
+    bool _up, _down, _left, _right;  //ÉÏÏÂ×óÓÒµÄÇ½
     Node(int x = 0, int y = 0, bool visited = false, bool up = false, bool down = false, bool left = false, bool right = false) {
         _x = x;
         _y = y;
@@ -22,7 +22,7 @@ class Node {
         _down = down;
         _left = left;
         _right = right;
-    }  //å¸¦å‚æ„é€ 
+    }  //´ø²Î¹¹Ôì
     friend Node operator+(const Node& A, const Node& B);
     friend bool operator==(const Node& A, const Node& B);
     friend bool operator!=(const Node& A, const Node& B);
@@ -52,40 +52,40 @@ bool operator!=(const Node& A, const Node& B) {
 }
 class Maze {
    private:
-    Node start;                                                           //å…¥å£
-    Node end;                                                             //å‡ºå£
-    Node offset[4] = {Node(-1, 0), Node(1, 0), Node(0, -1), Node(0, 1)};  //åç§»é‡ åˆ†åˆ«æ˜¯ä¸Šä¸‹å·¦å³
-    int row;                                                              //è¡Œæ•°
-    int column;                                                           //åˆ—æ•°
-    vector<vector<Node>> map;                                             //å­˜æ”¾äºŒç»´çš„èŠ‚ç‚¹å›¾
-    stack<Node> L;                                                        //è®°å½•è·¯å¾„
-    bool search_neighbors(Node A);                                        //æœç´¢é‚»æ¥èŠ‚ç‚¹
-    void break_the_wall(Node A, int direcion);                            //æ‹†å¢™
+    Node start;                                                           //Èë¿Ú
+    Node end;                                                             //³ö¿Ú
+    Node offset[4] = {Node(-1, 0), Node(1, 0), Node(0, -1), Node(0, 1)};  //Æ«ÒÆÁ¿ ·Ö±ğÊÇÉÏÏÂ×óÓÒ
+    int row;                                                              //ĞĞÊı
+    int column;                                                           //ÁĞÊı
+    vector<vector<Node>> map;                                             //´æ·Å¶şÎ¬µÄ½ÚµãÍ¼
+    stack<Node> L;                                                        //¼ÇÂ¼Â·¾¶
+    bool search_neighbors(Node A);                                        //ËÑË÷ÁÚ½Ó½Úµã
+    void break_the_wall(Node A, int direcion);                            //²ğÇ½
     void init(int R, int C) {
-        row = R;             //è¡Œæ•°
-        column = C;          //åˆ—æ•°
-        start = Node(0, 0);  //åˆå§‹åŒ–èµ·ç‚¹ç»ˆç‚¹
+        row = R;             //ĞĞÊı
+        column = C;          //ÁĞÊı
+        start = Node(0, 0);  //³õÊ¼»¯ÆğµãÖÕµã
         end = Node(row - 1, column - 1);
 
-        vector<Node> temp;  //ä¸­é—´vectorï¼Œå­˜ä¸€è¡Œ
+        vector<Node> temp;  //ÖĞ¼ävector£¬´æÒ»ĞĞ
         for (int i = 0; i < row; i++) {
-            temp.clear();  //ç”¨å®Œä¸€æ¬¡æ¸…ç©º
+            temp.clear();  //ÓÃÍêÒ»´ÎÇå¿Õ
             for (int j = 0; j < column; j++) {
-                temp.push_back(Node(i, j));  //èŠ‚ç‚¹æŒ‰è¡Œå¡«å…¥
+                temp.push_back(Node(i, j));  //½Úµã°´ĞĞÌîÈë
             }
-            map.push_back(temp);  //æ’å…¥ä¸€è¡Œ
+            map.push_back(temp);  //²åÈëÒ»ĞĞ
         }
     }
 
    public:
     Maze(int R = 10, int C = 10) { init(R, C); };
     ~Maze(){};
-    void print_node_position();  //è¾“å‡ºåæ ‡ä½ç½®
-    void print_node_num();       //è¾“å‡ºåºå·
-    void print_node_all();       //æ‰“å°æ‰€æœ‰ä¿¡æ¯(å…ˆå­˜å–ä¸€è¡Œçš„å†…å®¹å†æ‰“å°)
-    void print_the_wall();       //è¾“å‡ºå¢™
+    void print_node_position();  //Êä³ö×ø±êÎ»ÖÃ
+    void print_node_num();       //Êä³öĞòºÅ
+    void print_node_all();       //´òÓ¡ËùÓĞĞÅÏ¢(ÏÈ´æÈ¡Ò»ĞĞµÄÄÚÈİÔÙ´òÓ¡)
+    void print_the_wall();       //Êä³öÇ½
     void print_visited();
-    void reset();  //é‡ç½®
+    void reset();  //ÖØÖÃ
     friend class DFS;
     friend class Perfect_Maze;
 };
@@ -119,7 +119,7 @@ void Maze::print_node_num() {
     }
 }
 void Maze::print_the_wall() {
-    vector<Node> Line;  //ä¸€è¡Œçš„èŠ‚ç‚¹å†…å®¹
+    vector<Node> Line;  //Ò»ĞĞµÄ½ÚµãÄÚÈİ
     for (int i = 0; i < row; i++) {
         Line.clear();
         for (int j = 0; j < column; j++) {
@@ -132,119 +132,119 @@ void Maze::print_the_wall() {
 }
 void Maze::print_node_all() {
     int ID = 0;
-    const int printnumber = 0;
+    const int printnumber = 1;
     // int max_digit = int(log10(row * column)) + 1;
-    vector<Node> Line;  //ä¸€è¡Œçš„èŠ‚ç‚¹å†…å®¹
+    vector<Node> Line;  //Ò»ĞĞµÄ½ÚµãÄÚÈİ
     //cout << "Print_Node_All" << endl;
     for (int i = 0; i < row; i++) {
         Line.clear();
-        for (int j = 0; j < column; j++) {  //è¾“å‡ºç¬¬ä¸€è¡Œ
-            Line = map[i];                  //è·å–ç¬¬iè¡Œçš„èŠ‚ç‚¹æ•°æ®
-            cout << "â–ˆâ–ˆ";                   //è¾“å‡ºå·¦ä¸Šè§’ä¸€æ ¼å¢™
+        for (int j = 0; j < column; j++) {  //Êä³öµÚÒ»ĞĞ
+            Line = map[i];                  //»ñÈ¡µÚiĞĞµÄ½ÚµãÊı¾İ
+            cout << "¨€¨€";                   //Êä³ö×óÉÏ½ÇÒ»¸ñÇ½
             if (Line[j]._up == false)
-                cout << "â–ˆâ–ˆâ–ˆ";  //è¾“å‡ºèŠ‚ç‚¹ä¸Šæ–¹çš„å¢™
+                cout << "¨€¨€¨€";  //Êä³ö½ÚµãÉÏ·½µÄÇ½
             else {
-                cout << "   ";  //å¦åˆ™ä¸è¾“å‡ºå¢™
+                cout << "   ";  //·ñÔò²»Êä³öÇ½
             }
         }
-        cout << "â–ˆâ–ˆ" << endl;               //è¾“å‡ºç»“æŸèŠ‚ç‚¹å³ä¸Šè§’çš„å¢™ï¼Œæ¢è¡Œ
-        cout << "â–ˆâ–ˆ";                       //è¾“å‡ºç¬¬äºŒè¡Œæœ€å·¦è¾¹çš„å¢™
-        for (int j = 0; j < column; j++) {  //è¾“å‡ºç¬¬äºŒè¡Œï¼ˆåŒ…å«å·¦å³å¢™å’Œæ•°å­—ï¼‰
+        cout << "¨€¨€" << endl;               //Êä³ö½áÊø½ÚµãÓÒÉÏ½ÇµÄÇ½£¬»»ĞĞ
+        cout << "¨€¨€";                       //Êä³öµÚ¶şĞĞ×î×ó±ßµÄÇ½
+        for (int j = 0; j < column; j++) {  //Êä³öµÚ¶şĞĞ£¨°üº¬×óÓÒÇ½ºÍÊı×Ö£©
 
             if (Line[j]._right == false) {
                 if (printnumber)
-                    cout << hex << setw(3) << ID++;  //è¾“å‡ºæ•°å­—
+                    cout << hex << setw(3) << ID++;  //Êä³öÊı×Ö
                 else
                     cout << "   ";
-                cout << "â–ˆâ–ˆ";  //è¾“å‡ºèŠ‚ç‚¹å³è¾¹çš„å¢™
+                cout << "¨€¨€";  //Êä³ö½ÚµãÓÒ±ßµÄÇ½
             } else {
                 if (printnumber)
-                    cout << hex << setw(3) << ID++;  //è¾“å‡ºæ•°å­—
+                    cout << hex << setw(3) << ID++;  //Êä³öÊı×Ö
                 else
                     cout << "   ";
-                cout << "  ";  //å¦åˆ™ä¸è¾“å‡ºå¢™
+                cout << "  ";  //·ñÔò²»Êä³öÇ½
             }
         }
-        cout << endl;  //ç»“æŸè¾“å‡ºï¼Œæ¢è¡Œ
+        cout << endl;  //½áÊøÊä³ö£¬»»ĞĞ
     }
     for (int i = 0; i < 5 * column + 2; i++)
-        cout << "â–ˆ";  //è¾“å‡ºæœ€åä¸€è¡Œ
+        cout << "¨€";  //Êä³ö×îºóÒ»ĞĞ
     cout << endl;
 }
-bool Maze::search_neighbors(Node node) {  //æœç´¢nodeçš„é‚»æ¥èŠ‚ç‚¹æ˜¯å¦éƒ½è¢«è®¿é—®
-    int value[4] = {1, 1, 1, 1};          //å››ä¸ªæ–¹å‘ æŒ‰é¡ºåºæ˜¯ä¸Šä¸‹å·¦å³ é»˜è®¤ä¸º1 å·²è®¿é—®
-    bool flag;                            //è¿”å›å€¼ 0è¡¨ç¤ºæœ‰æœªè®¿é—®çš„èŠ‚ç‚¹ 1è¡¨ç¤ºå½“å‰èŠ‚ç‚¹é€€æ ˆ
+bool Maze::search_neighbors(Node node) {  //ËÑË÷nodeµÄÁÚ½Ó½ÚµãÊÇ·ñ¶¼±»·ÃÎÊ
+    int value[4] = {1, 1, 1, 1};          //ËÄ¸ö·½Ïò °´Ë³ĞòÊÇÉÏÏÂ×óÓÒ Ä¬ÈÏÎª1 ÒÑ·ÃÎÊ
+    bool flag;                            //·µ»ØÖµ 0±íÊ¾ÓĞÎ´·ÃÎÊµÄ½Úµã 1±íÊ¾µ±Ç°½ÚµãÍËÕ»
     int x = node._x;
     int y = node._y;
 
-    if (node._y == 0) {  //å·¦ä¾§èŠ‚ç‚¹
+    if (node._y == 0) {  //×ó²à½Úµã
         if (node._x == 0) {
-            //å·¦ä¸Š
+            //×óÉÏ
             value[1] = map[x + 1][y]._visited;  //down
             value[3] = map[x][y + 1]._visited;  //right
         } else if (node._x == row - 1) {
-            //å·¦ä¸‹
+            //×óÏÂ
             value[0] = map[x - 1][y]._visited;  //up
             value[3] = map[x][y + 1]._visited;  //right
         } else {
-            //å·¦ä¾§å…¶ä»–
+            //×ó²àÆäËû
             value[0] = map[x - 1][y]._visited;  //up
             value[1] = map[x + 1][y]._visited;  //down
             value[3] = map[x][y + 1]._visited;  //right
         }
-    } else if (node._y == column - 1) {  //å³ä¾§èŠ‚ç‚¹
+    } else if (node._y == column - 1) {  //ÓÒ²à½Úµã
         if (node._x == 0) {
-            //å³ä¸Š
+            //ÓÒÉÏ
             value[1] = map[x + 1][y]._visited;  //down
             value[2] = map[x][y - 1]._visited;  //left
         } else if (node._x == row - 1) {
-            //å³ä¸‹
+            //ÓÒÏÂ
             value[0] = map[x - 1][y]._visited;  //up
             value[2] = map[x][y - 1]._visited;  //left
         } else {
-            //å³ä¾§å…¶ä»–
+            //ÓÒ²àÆäËû
             value[0] = map[x - 1][y]._visited;  //up
             value[1] = map[x + 1][y]._visited;  //down
             value[2] = map[x][y - 1]._visited;  //left
         }
-    } else if (node._x == 0) {              //ä¸Šä¾§ ä¸åŒ…å«ä¸¤è§’
+    } else if (node._x == 0) {              //ÉÏ²à ²»°üº¬Á½½Ç
         value[1] = map[x + 1][y]._visited;  //down
         value[2] = map[x][y - 1]._visited;  //left
         value[3] = map[x][y + 1]._visited;  //right
 
-    } else if (node._x == row - 1) {        //ä¸‹ä¾§ ä¸åŒ…å«ä¸¤è§’
+    } else if (node._x == row - 1) {        //ÏÂ²à ²»°üº¬Á½½Ç
         value[0] = map[x - 1][y]._visited;  //up
         value[2] = map[x][y - 1]._visited;  //left
         value[3] = map[x][y + 1]._visited;  //right
     } else {
-        //éè¾¹ç•ŒèŠ‚ç‚¹
+        //·Ç±ß½ç½Úµã
         value[0] = map[x - 1][y]._visited;  //up
         value[1] = map[x + 1][y]._visited;  //down
         value[2] = map[x][y - 1]._visited;  //left
         value[3] = map[x][y + 1]._visited;  //right
     }
-    //cout << "ä¸Šä¸‹å·¦å³:" << value[0] << value[1] << value[2] << value[3] << endl;
-    flag = value[0] & value[1] & value[2] & value[3];  //æˆçœŸèµ‹å€¼ä¸º1111
+    //cout << "ÉÏÏÂ×óÓÒ:" << value[0] << value[1] << value[2] << value[3] << endl;
+    flag = value[0] & value[1] & value[2] & value[3];  //³ÉÕæ¸³ÖµÎª1111
     return flag;
 }
-void Maze::break_the_wall(Node A, int direcion) {  //æ‹†å¢™
+void Maze::break_the_wall(Node A, int direcion) {  //²ğÇ½
     int x = A._x;
     int y = A._y;
 
     switch (direcion) {
-        case 0:  //ä¸Š
+        case 0:  //ÉÏ
             map[x][y]._up = true;
             map[x - 1][y]._down = true;
             break;
-        case 1:  //ä¸‹
+        case 1:  //ÏÂ
             map[x][y]._down = true;
             map[x + 1][y]._up = true;
             break;
-        case 2:  //å·¦
+        case 2:  //×ó
             map[x][y]._left = true;
             map[x][y - 1]._right = true;
             break;
-        case 3:  //å³
+        case 3:  //ÓÒ
             map[x][y]._right = true;
             map[x][y + 1]._left = true;
             break;
@@ -273,9 +273,9 @@ void Maze::reset() {
 }
 void example_output() {
     cout << "Example Output: " << endl;
-    cout << "â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ" << endl;  //96,88
-    cout << "â–ˆâ–ˆ 1 â–ˆâ–ˆ 2 â–ˆâ–ˆ" << endl;
-    cout << "â–ˆâ–ˆ   â–ˆâ–ˆ   â–ˆâ–ˆ" << endl;
-    cout << "â–ˆâ–ˆ 3    4 â–ˆâ–ˆ" << endl;
-    cout << "â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ" << endl;
+    cout << "¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€" << endl;  //96,88
+    cout << "¨€¨€ 1 ¨€¨€ 2 ¨€¨€" << endl;
+    cout << "¨€¨€   ¨€¨€   ¨€¨€" << endl;
+    cout << "¨€¨€ 3    4 ¨€¨€" << endl;
+    cout << "¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€¨€" << endl;
 }
