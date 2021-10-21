@@ -1,4 +1,15 @@
-//单链表 未使用继承
+/*
+@version: v1.0.1
+@author:  Laobai
+@time:    2021年10月21日23:12:08
+*/
+
+/*
+update notes:
+v1.0.0 2021年10月19日17:55:52
+v1.0.1 2021年10月21日23:12:08
+*/
+
 #pragma once
 #include <iostream>
 template <class T>
@@ -241,4 +252,3 @@ void List<T>::inputRear(T endTag) {
     }
     last->link = NULL;  //表收尾
 }
-//时间
