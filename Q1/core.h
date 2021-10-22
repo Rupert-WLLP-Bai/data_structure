@@ -10,11 +10,12 @@
 update notes:
 
 v1.0.0 2021年10月19日17:55:52
-v1.0.1 2021年10月22日00:24:17
-	updates:
+	TODO in v1.0.1:
         1. 选项改成了enum
 	    2. 加入了一些输入提示
         3. 修改了操作前对空表的判断
+        
+v1.0.1 2021年10月22日00:24:17
     TODO in v1.0.2:
         1. 输出的时候可以在开头加入序号方便查看位置
         2. 注释的位置放在某一行的上一行(***改掉行尾注释)
@@ -61,6 +62,7 @@ bool get_input(int& ret, int min, int max, const char* prompt = "", const int ca
     }
 }
 
+//获取选项
 void fetch_choice(int& ret, Table& T) {
     int pos;  //操作位置
     enum choice {
@@ -110,7 +112,7 @@ void fetch_choice(int& ret, Table& T) {
 }
 
 //建立
-void Table::Spawn() {
+inline void Table::Spawn() {
     int num;
     cout << "首先请建立考生信息系统！" << endl;
     get_input(num, 0, INT32_MAX, "请输入考生人数：");
@@ -140,7 +142,7 @@ void Table::Spawn() {
 }
 
 //输出
-void Table::Print() {
+inline void Table::Print() {
     cout << "现有的信息为：" << endl;
     cout << setiosflags(ios::left) << setw(12) << "考号" << setw(16) << "姓名"
          << setw(8) << "性别" << setw(8) << "年龄" << setw(10) << "报考类别"
@@ -153,7 +155,7 @@ void Table::Print() {
 inline void Table::Delete(int i) {
     Student del;
     if (L.getData(i) == NULL)
-        cout << "当前位置(#" << i << ")没有数据，无法删除" << endl
+        cout << "当前位置(#" << i << ")无法删除，当前可选的插入位置范围是: (1 ~" << L.Length() << ")" << endl
              << endl;
     else {
         L.Remove(i, del);
@@ -197,7 +199,7 @@ inline void Table::Insert(int i) {
             }
         }
     } else {
-        cout << "第" << i << "个位置之后不能进行插入,当前可选的插入位置范围是: (0 ~ " << L.Length() << ")" << endl
+        cout << "当前位置(#" << i << ")之后无法插入,当前可选的插入位置范围是: (0 ~ " << L.Length() << ")" << endl
              << endl;
     }
     Print();
@@ -241,7 +243,7 @@ inline void Table::Revise(int i) {
             }
         }
     } else {
-        cout << "第" << i << "个考生的信息不存在，当前可选的修改位置是: (1 ~ " << L.Length() << ")" << endl;
+        cout << "当前位置(#" << i << ")无法修改，当前可选的修改位置是: (1 ~ " << L.Length() << ")" << endl;
         cout << endl;
     }
     Print();

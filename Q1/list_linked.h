@@ -1,9 +1,9 @@
 /*
 @file:        linkedlist.h
 @description: 单链表
-@version:     v1.0.0
+@version:     v1.0.1
 @author:      Laobai
-@time:        2021年9月16日14:55:52
+@time:        2021年10月22日22:25:49
 */
 
 /*
@@ -14,6 +14,13 @@ v1.0.0 2021年9月16日 14:55:52
         1. input,sort实现
         2. 考虑实现继承list.h
         3. 注释的位置放在某一行的上一行(***改掉行尾注释)
+        4. 把链表的实现全部放在外面
+        5. 类内的函数写注释
+
+v1.0.1 2021年10月22日22:25:49
+    TODO in v1.0.2:    
+        1. input,sort实现
+        2. 考虑实现继承list.h
 */
 
 #pragma once
@@ -21,7 +28,7 @@ v1.0.0 2021年9月16日 14:55:52
 
 //结点
 template <class T>
-struct LinkNode  {
+struct LinkNode {
     T data;
     LinkNode<T>* link;
     LinkNode(LinkNode<T>* ptr = NULL) {
@@ -36,34 +43,27 @@ struct LinkNode  {
 template <class T>
 class List {
    public:
-    List() { first = new LinkNode<T>; }
-    List(const T& x) { first = new LinkNode<T>(x); }
-    List(List<T>& L);
-    ~List() { makeEmpty(); }
-    void makeEmpty();
-    int Length() const;
-    LinkNode<T>* getHead() const { return first; }
-    LinkNode<T>* Search(T x);
-    LinkNode<T>* Locate(int i);
-    T* getData(int i);
-    void setData(int i, T& x);
-    bool Insert(int i, T& x);
-    bool Remove(int i, T& x);
-    bool IsEmpty() const {
-        if (first->data == NULL)
-            return true;
-        else
-            return false;
-    }
-    bool IsFull() const {
-        return false;
-    }
-    void Sort();
-    void input();
-    void output();
-    List<T>& operator=(List<T>& L);
-    void inputFront(T endTag);  //前插法建立单链表
-    void inputRear(T endTag);   //后插法建立单链表
+    List() { first = new LinkNode<T>; }               //无参构造
+    List(const T& x) { first = new LinkNode<T>(x); }  //带参构造
+    List(List<T>& L);                                 //拷贝构造
+    ~List() { makeEmpty(); }                          //析构
+    void makeEmpty();                                 //表置空
+    int Length() const;                               //返回长度
+    LinkNode<T>* getHead() const { return first; }    //返回头结点地址
+    LinkNode<T>* Search(T x);                         //搜索表中是否有value为x的结点
+    LinkNode<T>* Locate(int i);                       //返回第i个元素的结点地址
+    T* getData(int i);                                //返回第i个元素的vaule的地址
+    void setData(int i, T& x);                        //修改第i个元素的value为x
+    bool Insert(int i, T& x);                         //在第i个元素之后插入
+    bool Remove(int i, T& x);                         //移除第i个结点
+    bool IsEmpty() const;                             //判空
+    bool IsFull() const;                              //判满
+    void Sort();                                      //排序(未实现)
+    void input();                                     //输入(未实现)
+    void output();                                    //输出
+    List<T>& operator=(List<T>& L);                   //重载赋值运算符
+    void inputFront(T endTag);                        //前插法建立
+    void inputRear(T endTag);                         //后插法建立
    protected:
     LinkNode<T>* first;  //链表的头指针
 };
@@ -83,9 +83,9 @@ List<T>::List(List<T>& L) {
     destptr->link = NULL;
 }
 
+//将链表置为空表
 template <class T>
 void List<T>::makeEmpty() {
-    //将链表置为空表
     LinkNode<T>* q;
     while (first->link != NULL) {
         q = first->link;
@@ -94,9 +94,9 @@ void List<T>::makeEmpty() {
     }
 }
 
+//计算带附加头结点的单链表的长度
 template <class T>
 int List<T>::Length() const {
-    //计算带附加头结点的单链表的长度
     LinkNode<T>* p = first->link;
     int count = 0;
     while (p != NULL) {
@@ -106,9 +106,9 @@ int List<T>::Length() const {
     return count;
 }
 
+//在表中搜索含数据x的结点，搜索成功时函数返回该结点地址，否则返回NULL
 template <class T>
 LinkNode<T>* List<T>::Search(T x) {
-    //在表中搜索含数据x的结点，搜索成功时函数返回该结点地址，否则返回NULL
     LinkNode<T>* current = first->link;
     while (current != NULL) {
         if (current->data == x)
@@ -119,6 +119,7 @@ LinkNode<T>* List<T>::Search(T x) {
     return current;
 }
 
+//定位，返回第i个位置的结点地址
 template <class T>
 LinkNode<T>* List<T>::Locate(int i) {
     if (i < 0)  //i不合理
@@ -132,9 +133,9 @@ LinkNode<T>* List<T>::Locate(int i) {
     return current;  //返回第i个结点地址，若返回NULL则i值太大
 }
 
+//取出链表中第i个元素的值
 template <class T>
 T* List<T>::getData(int i) {
-    //取出链表中第i个元素的值
     if (i <= 0)  //i值太小
         return NULL;
     LinkNode<T>* current = Locate(i);  //定位到i
@@ -143,6 +144,7 @@ T* List<T>::getData(int i) {
     return &current->data;
 }
 
+//修改第i个元素的value为x
 template <class T>
 void List<T>::setData(int i, T& x) {
     if (i <= 0)  //i值太小
@@ -154,9 +156,9 @@ void List<T>::setData(int i, T& x) {
         current->data = x;
 }
 
+//将新元素x插入在链表中第i个结点之后
 template <class T>
 bool List<T>::Insert(int i, T& x) {
-    //将新元素x插入在链表中第i个结点之后
     LinkNode<T>* current = Locate(i);
     if (current == NULL)  //插入不成功
         return false;
@@ -170,9 +172,9 @@ bool List<T>::Insert(int i, T& x) {
     return true;  //插入成功
 }
 
+//将链表中的第i个元素删去，通过引用型参数x返回该元素的值
 template <class T>
 bool List<T>::Remove(int i, T& x) {
-    //将链表中的第i个元素删去，通过引用型参数x返回该元素的值
     LinkNode<T>* current = Locate(i - 1);
     if (current == NULL || current->link == NULL)  //删除不成功
         return false;
@@ -183,10 +185,24 @@ bool List<T>::Remove(int i, T& x) {
     return true;  //删除成功
 }
 
+//判空
+template <class T>
+bool List<T>::IsEmpty() const {
+    if (first->data == NULL)
+        return true;
+    else
+        return false;
+}
+
+//判满
+template <class T>
+bool List<T>::IsFull() const {
+    return false;
+}
+
+//单链表输出函数：将单链表中所有数据按逻辑顺序输出到屏幕上
 template <class T>
 void List<T>::output() {
-    //单链表输出函数：将单链表中所有数据按逻辑顺序输出到屏幕上
-    //int i = 0;
     LinkNode<T>* current = first->link;
     while (current != NULL) {
         std::cout << current->data << std::endl;
@@ -194,10 +210,10 @@ void List<T>::output() {
     }
 }
 
+//重载函数：赋值操作，形式如A=B
+//其中A是调用此操作的List对象，B是与参数表中引用型参数L结合的实参
 template <class T>
 List<T>& List<T>::operator=(List<T>& L) {
-    //重载函数：赋值操作，形式如A=B
-    //其中A是调用此操作的List对象，B是与参数表中引用型参数L结合的实参
     T value;
     LinkNode<T>* srcptr = L.getHead();  //被复制表的附加头结点地址
     LinkNode<T>* destptr = first = new LinkNode<T>;
@@ -211,10 +227,10 @@ List<T>& List<T>::operator=(List<T>& L) {
     return *this;  //返回操作对象地址
 }
 
+//前插法建立单链表
+//endTag是约定的输入序列结束的标志。如果输入序列是正整数，endTag可以是0或者负数
 template <class T>
 void List<T>::inputFront(T endTag) {
-    //前插法建立单链表
-    //endTag是约定的输入序列结束的标志。如果输入序列是正整数，endTag可以是0或者负数
     LinkNode<T>* newNode;
     T val;
     first = new LinkNode<T>;  //first->link默认值为NULL
@@ -235,9 +251,9 @@ void List<T>::inputFront(T endTag) {
     }
 }
 
+//后插法建立单链表
 template <class T>
 void List<T>::inputRear(T endTag) {
-    //后插法建立单链表
     LinkNode<T>*newNode, *last;  //尾指针
     T val;
     first = new LinkNode<T>;  //新链表附加头结点

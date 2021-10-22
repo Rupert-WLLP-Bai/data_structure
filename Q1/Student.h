@@ -51,6 +51,7 @@ class Student {
     bool operator!=(Student& s1);                            //重载!=
 };
 
+//重载输出
 inline ostream& operator<<(ostream& out, Student& Stu) {
     out << setiosflags(ios::left);
     out << setw(12) << Stu.id << setw(16) << Stu.name << setw(8) << Stu.gender
@@ -58,11 +59,13 @@ inline ostream& operator<<(ostream& out, Student& Stu) {
     return out;
 }
 
+//重载输入
 inline istream& operator>>(istream& in, Student& Stu) {
     cin >> Stu.id >> Stu.name >> Stu.gender >> Stu.age >> Stu.category;
     return in;
 }
 
+//重载!=
 bool Student::operator!=(Student& s1) {
     if (s1.id != id)
         return true;
@@ -77,6 +80,7 @@ bool Student::operator!=(Student& s1) {
     return false;
 }
 
+//重载==
 bool Student::operator==(Student& s1) {
     if (s1.id != id)
         return false;
