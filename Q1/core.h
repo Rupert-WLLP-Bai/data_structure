@@ -1,5 +1,5 @@
 /*
-@name:		  core.h
+@file:        core.h
 @description: 系统的实现
 @version:     v1.0.1
 @author:      Laobai
@@ -8,14 +8,18 @@
 
 /*
 update notes:
+
 v1.0.0 2021年10月19日17:55:52
 v1.0.1 2021年10月22日00:24:17
-	1. 选项改成了enum
-	2. 加入了一些输入提示
-    3. 修改了操作前对空表的判断
+	updates:
+        1. 选项改成了enum
+	    2. 加入了一些输入提示
+        3. 修改了操作前对空表的判断
+    TODO in v1.0.2:
+        1. 输出的时候可以在开头加入序号方便查看位置
 */
 
-#include "Student.h"
+#include "student.h"
 class Table {
    private:
     List<Student> L;  //保存数据的链表
@@ -137,7 +141,7 @@ void Table::Spawn() {
 //输出
 void Table::Print() {
     cout << "现有的信息为：" << endl;
-    cout << setiosflags(ios::left) << setw(12) << "序号" << setw(16) << "姓名"
+    cout << setiosflags(ios::left) << setw(12) << "考号" << setw(16) << "姓名"
          << setw(8) << "性别" << setw(8) << "年龄" << setw(10) << "报考类别"
          << endl;
     L.output();

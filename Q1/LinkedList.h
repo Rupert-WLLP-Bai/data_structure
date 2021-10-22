@@ -1,13 +1,18 @@
 /*
-@version: v1.0.1
-@author:  Laobai
-@time:    2021年10月21日23:12:08
+@file:        linkedlist.h
+@description: 单链表
+@version:     v1.0.0
+@author:      Laobai
+@time:        2021年9月16日14:55:52
 */
 
 /*
 update notes:
-v1.0.0 2021年10月19日17:55:52
-v1.0.1 2021年10月21日23:12:08
+
+v1.0.0 2021年9月16日 14:55:52
+    TODO in v1.0.1:
+        1. input,sort实现
+        2. 考虑实现继承list.h
 */
 
 #pragma once

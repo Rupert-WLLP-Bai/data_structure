@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="LinkedList.h">
+    <ClInclude Include="linkedlist.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Student.h">
+    <ClInclude Include="student.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="core.h">

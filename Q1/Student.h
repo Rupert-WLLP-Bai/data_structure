@@ -1,19 +1,23 @@
 /*
-@version: v1.0.1
-@author:  Laobai
-@time:    2021年10月21日23:12:08
+@file:        student.h
+@description: 学生类
+@version:     v1.0.0
+@author:      Laobai
+@time:        2021年9月19日17:55:52
 */
 
 /*
 update notes:
-v1.0.0 2021年10月19日17:55:52
-v1.0.1 2021年10月21日23:12:08
+
+v1.0.0 2021年9月19日17:55:52
+    TODO in v1.0.1:
+        1. 根据最长的名字调整输出的长度以及表头标题之间的距离     
 */
 
 #include <iomanip>
 #include <iostream>
 #include <string>
-#include "LinkedList.h"
+#include "linkedlist.h"
 using namespace std;
 
 class Student {
