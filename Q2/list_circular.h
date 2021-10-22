@@ -1,4 +1,18 @@
-//单向循环链表
+/*
+@file:        list_circular.h
+@description: 单向循环链表
+@version:     v1.0.0
+@author:      Laobai
+@time:        2021年10月22日11:07:25
+*/
+
+/*
+update notes:
+
+v1.0.0 2021年10月22日11:07:25
+    TODO in v1.0.1:
+        1. 注释的位置放在某一行的上一行(***改掉行尾注释)
+*/
 #pragma once
 #include <iomanip>
 #include <iostream>

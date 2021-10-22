@@ -1,18 +1,21 @@
-//约瑟夫问题
-/*本游戏要求用户输入的内容包括：
+/*
+@file:        joseph.h
+@description: 求解约瑟夫问题
+@version:     v1.0.0
+@author:      Laobai
+@time:        2021年10月22日11:07:25
+*/
 
-1. 旅客的个数，也就是N的值；
+/*
+update notes:
 
-2. 离开旅客的间隔书，也就是M的值；
-
-3. 所有旅客的序号作为一组数据要求存放在某种数据结构中。
-
-   本游戏要求输出的内容是包括：
-
-4. 离开旅客的序号；
-
-5. 剩余旅客的序号。*/
-#include "CircularList.h"
+v1.0.0 2021年10月22日11:07:25
+    TODO in v1.0.1:
+        1. gap过大时，先取余
+        2. 其他方式优化计算速度
+        3. 注释的位置放在某一行的上一行(***改掉行尾注释)
+*/
+#include "list_circular.h"
 #include "tool.h"
 class Joseph {
    private:

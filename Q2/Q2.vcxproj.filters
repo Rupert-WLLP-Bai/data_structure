@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CircularList.h">
+    <ClInclude Include="list_circular.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Joseph.h">
+    <ClInclude Include="joseph.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="tool.h">
