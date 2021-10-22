@@ -24,6 +24,7 @@
     <ProjectGuid>{06b15ecd-ad17-436d-9c61-3ee07ec11d0c}</ProjectGuid>
     <RootNamespace>Q10</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>Q10(v1.0)</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -143,7 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="menu.h" />
-    <ClInclude Include="sort_repair.h" />
+    <ClInclude Include="sort.h" />
     <ClInclude Include="stop_watch.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

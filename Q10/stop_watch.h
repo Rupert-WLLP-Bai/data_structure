@@ -1,5 +1,21 @@
+/*
+@file:        stop_watch.h
+@description: 实现计时器
+@version:     v1.0.0
+@author:      Laobai
+@time:        2021年10月22日11:27:48
+*/
+
+/*
+update notes:
+
+v1.0.0 2021年10月22日11:27:48
+    TODO in v1.0.1:
+        1. 注释的位置放在某一行的上一行(***改掉行尾注释)
+        2. 初始化private中的两个LARGE_INTEGER
+*/
+
 #pragma once
-//实现计时器
 #include <Windows.h>
 class stop_watch {
    public:

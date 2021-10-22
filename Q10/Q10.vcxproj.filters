@@ -23,7 +23,7 @@
     <ClInclude Include="menu.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="sort_repair.h">
+    <ClInclude Include="sort.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="stop_watch.h">

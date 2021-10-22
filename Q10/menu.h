@@ -1,4 +1,18 @@
-//menu.h 菜单函数
+/*
+@file:        menu.h
+@description: 菜单函数
+@version:     v1.0.0
+@author:      Laobai
+@time:        2021年10月22日11:25:35
+*/
+
+/*
+update notes:
+
+v1.0.0 2021年10月22日11:25:35
+    TODO in v1.0.1:
+        1. 注释的位置放在某一行的上一行(***改掉行尾注释)
+*/
 #include <iomanip>
 #include <iostream>
 using namespace std;
@@ -15,7 +29,7 @@ void mainloop();
 
 void get_input(int&, int, int, const char*);
 
-#include "sort_repair.h"
+#include "sort.h"
 using namespace sort_laobai;
 using namespace test_sort;
 void print_menu() {
@@ -132,5 +146,3 @@ void mainloop() {
         fetch_choice(arr);
     }
 }
-
-//2021年10月19日17:40:47

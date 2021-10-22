@@ -1,4 +1,18 @@
-//sort_repair.h
+/*
+@file:        sort.h
+@description: 排序函数
+@version:     v1.0.0
+@author:      Laobai
+@time:        2021年10月22日11:27:48
+*/
+
+/*
+update notes:
+
+v1.0.0 2021年10月22日11:27:48
+    TODO in v1.0.1:
+        1. 注释的位置放在某一行的上一行(***改掉行尾注释)
+*/
 #include <stdlib.h>
 #include <algorithm>
 #include <cmath>
