@@ -141,7 +141,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="core.h" />
-    <ClInclude Include="linkedlist.h" />
+    <ClInclude Include="list_linked.h" />
     <ClInclude Include="student.h" />
   </ItemGroup>
   <ItemGroup>

@@ -11,13 +11,14 @@ update notes:
 
 v1.0.0 2021年9月19日17:55:52
     TODO in v1.0.1:
-        1. 根据最长的名字调整输出的长度以及表头标题之间的距离     
+        1. 根据最长的名字调整输出的长度以及表头标题之间的距离
+        2. 注释的位置放在某一行的上一行(***改掉行尾注释)
 */
 
 #include <iomanip>
 #include <iostream>
 #include <string>
-#include "linkedlist.h"
+#include "list_linked.h"
 using namespace std;
 
 class Student {

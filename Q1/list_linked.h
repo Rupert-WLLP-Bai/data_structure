@@ -13,13 +13,15 @@ v1.0.0 2021年9月16日 14:55:52
     TODO in v1.0.1:
         1. input,sort实现
         2. 考虑实现继承list.h
+        3. 注释的位置放在某一行的上一行(***改掉行尾注释)
 */
 
 #pragma once
 #include <iostream>
+
+//结点
 template <class T>
-struct LinkNode  //结点
-{
+struct LinkNode  {
     T data;
     LinkNode<T>* link;
     LinkNode(LinkNode<T>* ptr = NULL) {
