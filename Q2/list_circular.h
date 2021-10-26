@@ -23,8 +23,9 @@ v1.0.1 2021年10月23日11:53:47
 #include <iostream>
 using namespace std;
 
+//链表结点定义
 template <class T>
-struct CircLinkNode  //链表结点定义
+struct CircLinkNode
 {
     T data;
     CircLinkNode<T>* Link;
