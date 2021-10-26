@@ -3,15 +3,15 @@
 @description: 排序函数
 @version:     v1.0.0
 @author:      Laobai
-@time:        2021年10月22日11:27:48
+@time:        2021年10月26日16:35:17
 */
 
 /*
 update notes:
 
-v1.0.0 2021年10月22日11:27:48
-    TODO in v1.0.1:
-        1. 注释的位置放在某一行的上一行(***改掉行尾注释)
+v1.0.0 2021年10月26日16:35:17
+    TODO in v1.0.1
+        1. rand的范围在Windows和Linux下不同
 */
 #include <stdlib.h>
 #include <algorithm>
@@ -73,7 +73,7 @@ void test_sort::print_arr(int* arr) {
     }
     cout << endl;
 }
-//随机生成
+//随机生成(Windows下的RAND_MAX和Linux下不同)
 void test_sort::generate(int* arr, int n, int range) {
     srand((unsigned int)time(NULL));
     for (int i = 0; i < n; i++) {

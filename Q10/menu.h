@@ -3,15 +3,16 @@
 @description: 菜单函数
 @version:     v1.0.0
 @author:      Laobai
-@time:        2021年10月22日11:25:35
+@time:        2021年10月26日16:35:17
 */
 
 /*
 update notes:
 
-v1.0.0 2021年10月22日11:25:35
+v1.0.0 2021年10月26日16:35:17
     TODO in v1.0.1:
-        1. 注释的位置放在某一行的上一行(***改掉行尾注释)
+        1. 完善输入提示
+        2. fetch_choice的内容改为枚举
 */
 #include <iomanip>
 #include <iostream>
@@ -23,10 +24,7 @@ void print_menu();
 void fetch_choice(int* arr);
 //主循环
 void mainloop();
-//获取输入(prompt为提示语,提供compare方法以及一个上下范围)
-//template <typename T>
-//void get_input(const char* prompt,T min,T max,bool *compare());
-
+//获取输入
 void get_input(int&, int, int, const char*);
 
 #include "sort.h"
@@ -61,17 +59,18 @@ void print_menu() {
          << "8---基数排序" << setw(15) << " "
          << "**" << endl;
     cout << "**" << setw(15) << ""
-        << "9---std::sort" << setw(14) << " "
-        << "**" << endl;
+         << "9---std::sort" << setw(14) << " "
+         << "**" << endl;
     cout << "**" << setw(15) << ""
          << "0---退出程序" << setw(15) << " "
          << "**" << endl;
 }
 
-void input(int* arr) {
+void input(int*& arr) {
     int num, range;
     get_input(num, 0, INT32_MAX, "Input num of random numbers : ");
     get_input(range, 1, INT32_MAX, "Input range of random numbers : ");
+    arr = new int[num];
     generate(arr, num, range);
 }
 
@@ -90,7 +89,7 @@ void get_input(int& ret, int min, int max, const char* prompt = "") {
 
 void fetch_choice(int* arr) {
     int ret;
-    const char* NAME[10] = {"Exit", "Bubble_sort", "Selection_sort", "Insertion_sort", "Quick_sort", "Shell_sort", "Heap_sort", "Merge_sort", "Radix_sort","std::sort"};
+    string NAME[10] = {"Exit", "Bubble_sort", "Selection_sort", "Insertion_sort", "Quick_sort", "Shell_sort", "Heap_sort", "Merge_sort", "Radix_sort", "std::sort"};
     get_input(ret, 0, 9, "Choose type of sort : ");  //0~8的输入
     cout << NAME[ret] << endl;
     switch (ret) {
@@ -128,14 +127,7 @@ void fetch_choice(int* arr) {
 }
 
 void mainloop() {
-    //可提供一个重置数组的选项 同时重新打印菜单 即直接从程序开头重新执行
-    //输出菜单
-    //获取数量 以及范围
-    //输入错误 停顿 clear 返回最开始
-    //获取用户操作
-    //输入错误重新获取用户操作 不重新生成
-    const int N = 100000000;
-    int* arr = new int[N];
+    int* arr = nullptr; //需要初始化
     int i = 1;
     while (1) {
         if (i) {
@@ -146,3 +138,5 @@ void mainloop() {
         fetch_choice(arr);
     }
 }
+
+//2021年10月19日17:40:47
