@@ -1,4 +1,20 @@
-//tool.h 获取输入等工具函数
+/*
+@file:        joseph.h
+/*
+@file:        tool.h
+@description: 工具函数
+@version:     v1.0.0
+@author:      Laobai
+@time:        2021年10月22日11:20:33
+*/
+
+/*
+update notes:
+
+v1.0.0 2021年10月22日11:20:33
+
+*/
+
 #pragma once
 #include<iostream>
 using namespace std;
